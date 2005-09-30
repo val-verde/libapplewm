@@ -1,9 +1,7 @@
 lib_LTLIBRARIES = libAppleWM.la
 
-libAppleWM_la_SOURCES = \ 
-         applewm.c \
-         applewm.h \
-         applewmstr.h
+libAppleWM_la_SOURCES = \
+         applewm.c
 
 libAppleWM_la_LIBADD = @DEP_LIBS@
 
