@@ -1,0 +1,10 @@
+lib_LTLIBRARIES = libAppleWM.la
+
+libAppleWM_la_SOURCES = \ 
+         applewm.c \
+         applewm.h \
+         applewmstr.h
+
+libAppleWM_la_LIBADD = @DEP_LIBS@
+
+libAppleWM_la_LDFLAGS = -version-info 7:0:0 -no-undefined
