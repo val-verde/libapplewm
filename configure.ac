@@ -23,7 +23,7 @@ dnl Process this file with autoconf to create configure.
 
 AC_PREREQ([2.57])
 
-AC_INIT(libAppleWM, 0.99.1, [https://bugs.freedesktop.org/enter_bug.cgi?product=xorg], libAppleWM)
+AC_INIT(libAppleWM, 0.99.2, [https://bugs.freedesktop.org/enter_bug.cgi?product=xorg], libAppleWM)
 AM_INIT_AUTOMAKE([dist-bzip2])
 AM_MAINTAINER_MODE
 
@@ -34,10 +34,10 @@ AC_PROG_CC
 AC_PROG_LIBTOOL
 
 # Check for dependencies
-PKG_CHECK_MODULES(DEP, x11 xext)
+PKG_CHECK_MODULES(APPLEWM, x11 xext)
 
-AC_SUBST(DEP_CFLAGS)
-AC_SUBST(DEP_LIBS)
+AC_SUBST(APPLEWM_CFLAGS)
+AC_SUBST(APPLEWM_LIBS)
 		  
 AC_OUTPUT([Makefile
 	   src/Makefile

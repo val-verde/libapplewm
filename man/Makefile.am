@@ -19,6 +19,6 @@
 #  PERFORMANCE OF THIS SOFTWARE.
 #
 
-man_MANS = \
+man3_MANS = \
          AppleWM.3
 EXTRA_DIST = $(man3_MANS)
