@@ -6,6 +6,6 @@ includedir=@includedir@
 Name: AppleWM
 Description: The AppleWM Library
 Version: @PACKAGE_VERSION@
-Cflags: -I${includedir} @DEP_CFLAGS@
-Libs: -L${libdir} -lAppleWM @DEP_LIBS@
-
+Requires.private: x11 xext
+Cflags: -I${includedir}
+Libs: -L${libdir} -lAppleWM
