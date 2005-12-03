@@ -39,6 +39,8 @@ PKG_CHECK_MODULES(APPLEWM, x11 xext xextproto applewmproto)
 AC_SUBST(APPLEWM_CFLAGS)
 AC_SUBST(APPLEWM_LIBS)
 		  
+XORG_CHECK_MALLOC_ZERO
+
 AC_OUTPUT([Makefile
 	   src/Makefile
 	   man/Makefile
