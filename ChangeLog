@@ -1,3 +1,8 @@
+2005-12-05  Kevin E. Martin  <kem-at-freedesktop-dot-org>
+
+	* configure.ac:
+	Add missing XORG_RELEASE_VERSION to configure.ac.
+
 2005-12-03  Kevin E. Martin  <kem-at-freedesktop-dot-org>
 
 	* configure.ac:
