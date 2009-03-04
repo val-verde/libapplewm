@@ -39,6 +39,8 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #include <X11/extensions/extutil.h>
 #include <stdio.h>
 
+#include <HIServices/Processes.h>
+
 static XExtensionInfo _applewm_info_data;
 static XExtensionInfo *applewm_info = &_applewm_info_data;
 static char *applewm_extension_name = APPLEWMNAME;
@@ -374,6 +376,36 @@ Bool XAppleWMSetWindowLevel(dpy, id, level)
     TRACE("SetWindowLevel... return True");
     return True;
 }
+
+Bool XAppleWMSendPSN(Display* dpy) {
+    XExtDisplayInfo *info = find_display (dpy);
+    xAppleWMSendPSNReq *req;
+    ProcessSerialNumber psn;
+    OSErr err;
+    
+    
+    TRACE("SendPSN...");
+    AppleWMCheckExtension (dpy, info, False);
+
+    err = GetCurrentProcess(&psn);
+    
+    if(err != noErr) {
+        TRACE("SendPSN... couldn't get current Process.");
+        return False;
+    }
+    
+    LockDisplay(dpy);
+    GetReq(AppleWMSendPSN, req);
+    req->reqType = info->codes->major_opcode;
+    req->wmReqType = X_AppleWMSendPSN;
+    req->psn_hi = psn.highLongOfPSN;
+    req->psn_lo = psn.lowLongOfPSN;
+    UnlockDisplay(dpy);
+    SyncHandle();
+    TRACE("SendPSN... return True");
+    return True;
+}
+
 
 Bool XAppleWMSetCanQuit(dpy, state)
     Display* dpy;

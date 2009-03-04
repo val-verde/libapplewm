@@ -34,7 +34,7 @@ AC_PROG_CC
 AC_PROG_LIBTOOL
 
 # Check for dependencies
-PKG_CHECK_MODULES(APPLEWM, x11 xext xextproto applewmproto)
+PKG_CHECK_MODULES(APPLEWM, x11 xext xextproto [applewmproto >= 1.2])
 
 AC_SUBST(APPLEWM_CFLAGS)
 AC_SUBST(APPLEWM_LIBS)
