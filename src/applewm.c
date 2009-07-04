@@ -378,6 +378,25 @@ Bool XAppleWMSendPSN(Display* dpy) {
     return True;
 }
 
+Bool XAppleWMAttachTransient(Display* dpy, Window child, Window parent) {
+    XExtDisplayInfo *info = find_display (dpy);
+    xAppleWMAttachTransientReq *req;
+    
+    TRACE("AttachTransient...");
+    AppleWMCheckExtension (dpy, info, False);
+
+    LockDisplay(dpy);
+    GetReq(AppleWMAttachTransient, req);
+    req->reqType = info->codes->major_opcode;
+    req->wmReqType = X_AppleWMAttachTransient;
+    req->child = child;
+    req->parent = parent;
+    UnlockDisplay(dpy);
+    SyncHandle();
+    TRACE("AttachTransient... return True");
+    return True;
+}
+
 Bool XAppleWMSetCanQuit(Display* dpy, Bool state)
 {
     XExtDisplayInfo *info = find_display (dpy);
