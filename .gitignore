@@ -24,5 +24,7 @@ stamp-h1
 *.la
 *.lo
 libAppleWM-*.tar.*
+*.announce
 ChangeLog
+INSTALL
 tags
