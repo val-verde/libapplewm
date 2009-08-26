@@ -34,7 +34,8 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #include <config.h>
 #endif
 #include <X11/Xlibint.h>
-#include <X11/extensions/applewmstr.h>
+#include <X11/extensions/applewm.h>
+#include <X11/extensions/applewmproto.h>
 #include <X11/extensions/Xext.h>
 #include <X11/extensions/extutil.h>
 #include <stdio.h>
