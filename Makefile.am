@@ -27,8 +27,6 @@ pkgconfig_DATA = applewm.pc
 EXTRA_DIST = applewm.pc.in
 
 
-EXTRA_DIST += ChangeLog
-MAINTAINERCLEANFILES = ChangeLog
 
 .PHONY: ChangeLog
 
