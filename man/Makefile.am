@@ -19,6 +19,32 @@
 #  PERFORMANCE OF THIS SOFTWARE.
 #
 
-man3_MANS = \
-         AppleWM.3
-EXTRA_DIST = $(man3_MANS)
+libman_PRE = AppleWM.man
+libmandir = $(LIB_MAN_DIR)
+libman_DATA = $(libman_PRE:man=$(LIB_MAN_SUFFIX))
+
+EXTRA_DIST = $(libman_PRE)
+CLEANFILES = $(libman_DATA)
+
+# Strings to replace in man pages
+XORGRELSTRING = @PACKAGE_STRING@
+  XORGMANNAME = X Version 11
+
+MAN_SUBSTS = \
+	-e 's|__vendorversion__|"$(XORGRELSTRING)" "$(XORGMANNAME)"|' \
+	-e 's|__xorgversion__|"$(XORGRELSTRING)" "$(XORGMANNAME)"|' \
+	-e 's|__xservername__|XQuartz|g' \
+	-e 's|__xconfigfile__|xorg.conf|g' \
+	-e 's|__projectroot__|$(prefix)|g' \
+	-e 's|__apploaddir__|$(appdefaultdir)|' \
+	-e 's|__appmansuffix__|$(APP_MAN_SUFFIX)|g' \
+	-e 's|__libmansuffix__|$(LIB_MAN_SUFFIX)|g' \
+	-e 's|__adminmansuffix__|$(ADMIN_MAN_SUFFIX)|g' \
+	-e 's|__miscmansuffix__|$(MISC_MAN_SUFFIX)|g' \
+	-e 's|__filemansuffix__|$(FILE_MAN_SUFFIX)|g'
+
+SUFFIXES = .$(LIB_MAN_SUFFIX) .man
+
+.man.$(LIB_MAN_SUFFIX):
+	$(AM_V_GEN)$(SED) $(MAN_SUBSTS) < $< > $@
+

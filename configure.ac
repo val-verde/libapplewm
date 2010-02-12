@@ -37,6 +37,7 @@ AM_CONFIG_HEADER(config.h)
 # Check for progs
 AC_PROG_CC
 AC_PROG_LIBTOOL
+AC_PROG_SED
 
 # Check for dependencies
 PKG_CHECK_MODULES(APPLEWM, x11 xext xextproto [applewmproto >= 1.4])
