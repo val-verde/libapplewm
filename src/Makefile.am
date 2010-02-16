@@ -1,11 +1,16 @@
 lib_LTLIBRARIES = libAppleWM.la
 
 libAppleWM_la_SOURCES = \
-         applewm.c
+	applewm.c
 
-libAppleWM_la_CFLAGS = @APPLEWM_CFLAGS@ @MALLOC_ZERO_CFLAGS@ \
+libAppleWM_la_CFLAGS = \
+	$(APPLEWM_CFLAGS) \
+	$(MALLOC_ZERO_CFLAGS) \
+	$(CWARNFLAGS) \
 	-F/System/Library/Frameworks/ApplicationServices.framework/Frameworks \
-	-I$(top_srcdir)/include -I$(top_srcdir)/include/X11 -I$(top_srcdir)/include/X11/extensions
+	-I$(top_srcdir)/include \
+	-I$(top_srcdir)/include/X11 \
+	-I$(top_srcdir)/include/X11/extensions
 
 libAppleWM_la_LIBADD = @APPLEWM_LIBS@
 
