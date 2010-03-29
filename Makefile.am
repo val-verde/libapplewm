@@ -25,9 +25,6 @@ pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = applewm.pc
 
 MAINTAINERCLEANFILES = ChangeLog INSTALL
-EXTRA_DIST = applewm.pc.in
-
-
 
 .PHONY: ChangeLog INSTALL
 
