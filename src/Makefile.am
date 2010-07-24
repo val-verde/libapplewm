@@ -3,7 +3,7 @@ lib_LTLIBRARIES = libAppleWM.la
 libAppleWM_la_SOURCES = \
 	applewm.c
 
-libAppleWM_la_CFLAGS = \
+AM_CFLAGS = \
 	$(APPLEWM_CFLAGS) \
 	$(MALLOC_ZERO_CFLAGS) \
 	$(CWARNFLAGS) \
