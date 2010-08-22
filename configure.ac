@@ -27,17 +27,16 @@ AC_INIT(libAppleWM, 1.4.0, [https://bugs.freedesktop.org/enter_bug.cgi?product=x
 AM_INIT_AUTOMAKE([foreign dist-bzip2])
 AM_MAINTAINER_MODE
 
-# Require xorg-macros: XORG_DEFAULT_OPTIONS
+# Require X.Org macros 1.8 or later for MAN_SUBSTS set by XORG_MANPAGE_SECTIONS
 m4_ifndef([XORG_MACROS_VERSION],
-          [m4_fatal([must install xorg-macros 1.3 or later before running autoconf/autogen])])
-XORG_MACROS_VERSION(1.3)
+          [m4_fatal([must install xorg-macros 1.8 or later before running autoconf/autogen])])
+XORG_MACROS_VERSION(1.8)
 XORG_DEFAULT_OPTIONS
 AM_CONFIG_HEADER(config.h)
 
 # Check for progs
 AC_PROG_CC
 AC_PROG_LIBTOOL
-AC_PROG_SED
 
 # Check for dependencies
 PKG_CHECK_MODULES(APPLEWM, x11 xext xextproto [applewmproto >= 1.4])
