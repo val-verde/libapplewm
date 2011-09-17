@@ -355,18 +355,18 @@ Bool XAppleWMSendPSN(Display* dpy) {
     xAppleWMSendPSNReq *req;
     ProcessSerialNumber psn;
     OSErr err;
-    
-    
+
+
     TRACE("SendPSN...");
     AppleWMCheckExtension (dpy, info, False);
 
     err = GetCurrentProcess(&psn);
-    
+
     if(err != noErr) {
         TRACE("SendPSN... couldn't get current Process.");
         return False;
     }
-    
+
     LockDisplay(dpy);
     GetReq(AppleWMSendPSN, req);
     req->reqType = info->codes->major_opcode;
@@ -382,7 +382,7 @@ Bool XAppleWMSendPSN(Display* dpy) {
 Bool XAppleWMAttachTransient(Display* dpy, Window child, Window parent) {
     XExtDisplayInfo *info = find_display (dpy);
     xAppleWMAttachTransientReq *req;
-    
+
     TRACE("AttachTransient...");
     AppleWMCheckExtension (dpy, info, False);
 

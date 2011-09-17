@@ -42,7 +42,7 @@ XORG_CHECK_MALLOC_ZERO
 
 # Obtain compiler/linker options for depedencies
 PKG_CHECK_MODULES(APPLEWM, x11 xext xextproto [applewmproto >= 1.4])
-		  
+
 AC_CONFIG_FILES([Makefile
 		src/Makefile
 		man/Makefile
