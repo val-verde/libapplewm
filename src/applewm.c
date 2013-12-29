@@ -44,7 +44,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 static XExtensionInfo _applewm_info_data;
 static XExtensionInfo *applewm_info = &_applewm_info_data;
-static char *applewm_extension_name = APPLEWMNAME;
+static const char *applewm_extension_name = APPLEWMNAME;
 
 #define AppleWMCheckExtension(dpy,i,val) \
   XextCheckExtension (dpy, i, applewm_extension_name, val)
