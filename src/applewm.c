@@ -253,9 +253,6 @@ Bool XAppleWMSetWindowMenuWithShortcuts(Display* dpy, int nitems,
 {
     XExtDisplayInfo *info = find_display (dpy);
     xAppleWMSetWindowMenuReq *req;
-    int i, total_length, len;
-    char *buf, *ptr;
-
     TRACE("SetWindowMenu...");
     AppleWMCheckExtension (dpy, info, False);
 
@@ -265,26 +262,31 @@ Bool XAppleWMSetWindowMenuWithShortcuts(Display* dpy, int nitems,
     req->wmReqType = X_AppleWMSetWindowMenu;
     req->nitems = nitems;
 
-    total_length = 0;
-    for (i = 0; i < nitems; i++)
-        total_length += strlen (items[i]) + 2;
+    if (nitems > 0) {
+        char *buf, *ptr;
+        int i, len;
 
-    ptr = buf = alloca (total_length);
-    for (i = 0; i < nitems; i++)
-    {
-        len = strlen (items[i]);
-        *ptr++ = shortcuts ? shortcuts[i] : 0;
-        memcpy (ptr, items[i], len);
-        ptr[len] = 0;
-        ptr += len + 1;
+        int total_length = 0;
+        for (i = 0; i < nitems; i++)
+            total_length += strlen (items[i]) + 2;
+
+        ptr = buf = alloca (total_length);
+        for (i = 0; i < nitems; i++)
+        {
+            len = strlen (items[i]);
+            *ptr++ = shortcuts ? shortcuts[i] : 0;
+            memcpy (ptr, items[i], len);
+            ptr[len] = 0;
+            ptr += len + 1;
+        }
+
+        req->length += (total_length + 3) >> 2;
+        Data (dpy, buf, total_length);
     }
-
-    req->length += (total_length + 3) >> 2;
-    Data (dpy, buf, total_length);
 
     UnlockDisplay(dpy);
     SyncHandle();
-    TRACE("SetlectInput... return True");
+    TRACE("SetWindowMenu... return True");
     return True;
 }
 
