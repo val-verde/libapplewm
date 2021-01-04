@@ -7,7 +7,7 @@ AM_CFLAGS = \
 	$(APPLEWM_CFLAGS) \
 	$(MALLOC_ZERO_CFLAGS) \
 	$(CWARNFLAGS) \
-	-F/System/Library/Frameworks/ApplicationServices.framework/Frameworks \
+	-iframeworkwithsysroot /System/Library/Frameworks/ApplicationServices.framework/Frameworks \
 	-I$(top_srcdir)/include \
 	-I$(top_srcdir)/include/X11 \
 	-I$(top_srcdir)/include/X11/extensions
