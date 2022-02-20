@@ -39,7 +39,7 @@ XORG_MACROS_VERSION(1.8)
 XORG_DEFAULT_OPTIONS
 XORG_CHECK_MALLOC_ZERO
 
-# Obtain compiler/linker options for depedencies
+# Obtain compiler/linker options for dependencies
 PKG_CHECK_MODULES(APPLEWM, x11 xext xextproto [applewmproto >= 1.4])
 
 AC_CONFIG_FILES([Makefile

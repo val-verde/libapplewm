@@ -241,12 +241,12 @@ A more complete description will be forthcoming eventually.
 .SH FUNCTIONS
 .B XAppleWMDisableUpdate
 causes any updates to the windows on the screen to be queued until updates
-are reenabled with \fBXAppleWMReenableUpdate\fP. This is useful to avoid
+are re-enabled with \fBXAppleWMReenableUpdate\fP. This is useful to avoid
 intermediate redraws to the screen if a number of changes are going to be
 made at once. Updates should only be disabled temporarily while drawing
 to a window. These calls may be nested and each call to
 \fBXAppleWMDisableUpdate\fP must be paired with a subsequent call to
-\fBXAppleWMReenableUpdate\fP. Updating is not reenabled until the last
+\fBXAppleWMReenableUpdate\fP. Updating is not re-enabled until the last
 unnested call to \fBXAppleWMReenableUpdate\fP. Disabling updates applies
 to window content; however, it is implementation dependent whether window
 size and position changes are disabled as well.
